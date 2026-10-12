@@ -1,0 +1,6 @@
+<form class="language-switch" action="{{ url_for('set_language') }}" method="post" aria-label="{{ _('Taal') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf }}">
+  <input type="hidden" name="return_to" value="{{ request.path }}">
+  <button type="submit" name="language" value="nl" lang="nl" aria-label="Nederlands" aria-pressed="{{ 'true' if language == 'nl' else 'false' }}" class="{{ 'active' if language == 'nl' else '' }}">NL</button>
+  <button type="submit" name="language" value="en" lang="en" aria-label="English" aria-pressed="{{ 'true' if language == 'en' else 'false' }}" class="{{ 'active' if language == 'en' else '' }}">EN</button>
+</form>

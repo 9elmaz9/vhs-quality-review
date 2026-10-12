@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ language }}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ _('Inloggen') }} · Zwartruimte</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='brand_header.svg') }}" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header"><div class="header-inner">
+    <a href="/" class="brand"><img src="{{ url_for('static', filename='brand_header.svg') }}" alt="meemoo"></a>
+    <div class="app-name">Zwartruimte <span>& visuele ruis</span></div>
+    {% include "language_switch.html" %}
+  </div></header>
+  <main class="login-main"><section class="panel login-panel">
+    <p class="eyebrow">{{ _('TEAM · beveiligde toegang') }}</p>
+    <h1>{{ _('Welkom terug') }}</h1>
+    <p class="muted">{{ _("Voer het gedeelde wachtwoord in om video's en analyses te openen.") }}</p>
+    {% if error %}<div class="notice" role="alert">{{ _(error) }}</div>{% endif %}
+    <form method="post" action="{{ url_for('login') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <input type="hidden" name="next" value="{{ next_path }}">
+      <label class="field-label" for="password">{{ _('Wachtwoord') }}</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="1024" autofocus>
+      <button class="button primary full" type="submit">{{ _('Inloggen') }} <span aria-hidden="true">→</span></button>
+    </form>
+  </section></main>
+</body></html>
